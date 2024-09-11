@@ -9,8 +9,8 @@ public class Policy {
    //smoker or non-smoker
    private String smokingStatus;
    //height-inches|weight-pounds
-   private int height;
-   private int weight;
+   private double height;
+   private double weight;
    
    
    //no args constructor, sets default values
@@ -24,7 +24,7 @@ public class Policy {
    }
    
    //args constructor
-   public Policy(String policyNumber, String providerName, String firstName, String lastName, int age, String smokingStatus, int height, int weight) {
+   public Policy(String policyNumber, String providerName, String firstName, String lastName, int age, String smokingStatus, double height, double weight) {
       this.policyNumber = policyNumber;
       this.providerName = providerName;
       this.age = age;
@@ -36,26 +36,18 @@ public class Policy {
    }
    
    //calculates BMI (body mass index) using the formula ((Policyholder’s Weight * 703 ) / (Policyholder’s Height^2))
-   private double calculateBMI() {
-      double BMI = ((double)weight * 703) / (Math.pow((double)height, 2));
+   public double calculateBMI() {
+      double BMI = (weight * 703) / (Math.pow(height, 2));
       return BMI;
    }
    
-   private double calculatePrice() {
-      double price = 500;
+   //calculates price | base fee is 600, if over 50 years old additional 75, if smoker additional 100, if BMI is over 35 use this formula Additional Fee = ( BMI – 35 ) * 20
+   public double calculatePrice() {
+      double price = 600;
       if (age > 50) price += 75;
       if (smokingStatus == "smoker") price += 100;
       if (calculateBMI() > 35) price += (calculateBMI() -35) * 20;
       return price;
-   }
-   
-   public String toString() {
-      System.out.println("Policy Number: " + policyNumber);
-      System.out.println("Provider Name: " + providerName);
-      System.out.println("Policyholder's First Name: " + firstName);
-      System.out.println("Policyholder's Last Name: " + lastName);
-      System.out.println("Policyholder's Age: " + age);
-      System.out.println("Policyholder's Smoking Status: " + smokingStatus);
    }
    
    //getters
@@ -77,10 +69,10 @@ public class Policy {
    public String getSmokingStatus() {
       return smokingStatus;
    }
-   public int getHeight() {
+   public double getHeight() {
       return height;
    }
-   public int getWeight() {
+   public double getWeight() {
       return weight;
    }
    
@@ -109,7 +101,4 @@ public class Policy {
    public void setWeight(int weight) {
       this.weight = weight;
    }
-   
-   
-
 }
