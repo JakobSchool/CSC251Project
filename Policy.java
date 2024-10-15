@@ -171,7 +171,7 @@ public class Policy {
    */
    public String toString() {
       return "\n-----------------------------------------------------------" +
-              "\n\nPolicy Number: " + getPolicyNumber() +
+              "\nPolicy Number: " + getPolicyNumber() +
               "\n\nProvider Name: " + getProviderName() +
               "\n\nPolicyholder's First Name: " + getFirstName() +
               "\n\nPolicyholder's Last Name: " + getLastName() +
