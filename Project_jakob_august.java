@@ -22,18 +22,23 @@ public class Project_jakob_august {
         String smokingStatus = input.nextLine();
         double height = Integer.parseInt(input.nextLine());
         double weight = Integer.parseInt(input.nextLine());
-        Policy policy = new Policy(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight);
+        
+        PolicyHolder policyHolder = new PolicyHolder(policyNumber, providerName, firstName, lastName, age, smokingStatus, height, weight);
+        Policy policy = new Policy(policyHolder);
         policies.add(policy);
-        if (policy.getSmokingStatus().equals("smoker")) smoker++;
+        
+        if (smokingStatus.equals("smoker")) smoker++;
         else nonSmoker++;
         //goes through line between names
         if (input.hasNext()) input.nextLine();
         } while(input.hasNext());
         
         for (Policy policy : policies) {
-         System.out.println(policy);
+         System.out.println("\n" + policy + "\n");
         }
+        
+        System.out.printf("\nThere were %d Policy objects created. ", Policy.getPolicyObjects());
         System.out.printf("\n\nThe number of policies with a smoker is: %d", smoker);
-        System.out.printf("\n\nThe number of policies with a non-smoker is: %d", nonSmoker);
+        System.out.printf("\nThe number of policies with a non-smoker is: %d", nonSmoker);
    }
 }
