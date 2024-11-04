@@ -14,7 +14,7 @@ public class PolicyHolder {
    /**
       no args constructor, sets default values
    */
-   public Policy() {
+   public PolicyHolder() {
       firstName = "";
       lastName = "";
       age = 0;
@@ -34,7 +34,7 @@ public class PolicyHolder {
       @param height height of policyholder
       @param weight weight of policyholder
     */
-   public Policy(String policyNumber, String providerName, String firstName, String lastName, int age, String smokingStatus, double height, double weight) {
+   public PolicyHolder(String policyNumber, String providerName, String firstName, String lastName, int age, String smokingStatus, double height, double weight) {
       this.policyNumber = policyNumber;
       this.providerName = providerName;
       this.age = age;
@@ -43,6 +43,21 @@ public class PolicyHolder {
       this.firstName = firstName;
       this.lastName = lastName;
       this.smokingStatus = smokingStatus;
+   }
+   
+   /**
+      Copy Constructor
+      @param policyHolder object that is getting coppied
+   */
+   public PolicyHolder(PolicyHolder policyHolder) {
+      this.policyNumber = policyHolder.policyNumber;
+      this.providerName = policyHolder.providerName;
+      this.age = policyHolder.age;
+      this.height = policyHolder.height;
+      this.weight = policyHolder.weight;
+      this.firstName = policyHolder.firstName;
+      this.lastName = policyHolder.lastName;
+      this.smokingStatus = policyHolder.smokingStatus;
    }
    
    /**
@@ -149,6 +164,8 @@ public class PolicyHolder {
               "\n\nPolicyholder's First Name: " + getFirstName() +
               "\n\nPolicyholder's Last Name: " + getLastName() +
               "\n\nPolicyholder's Age: " + getAge() +
-              "\n\nPolicyholder's Smoking Status: " + getSmokingStatus()
+              "\n\nPolicyholder's Smoking Status: " + getSmokingStatus() +
+              String.format("\n\nPolicyholder's Height: %.1f inches", getHeight()) +
+              String.format("\n\nPolicyholder's Weight: %.1f pounds", getWeight());
    }
 }

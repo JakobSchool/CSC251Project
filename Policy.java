@@ -1,13 +1,32 @@
 public class Policy {
 
-   static int PolicyObjects = 0;
+   private static int policyObjects = 0;
+   private PolicyHolder policyHolder;
+   
+    /**
+      no args constructor, sets default values
+   */
+   public Policy() {
+      policyHolder = new PolicyHolder();
+      policyObjects++;
+   }
+   
+   /**
+      args constructor
+      @param PolicyHolder contains all information regarding the policyHolder
+    */
+   public Policy(PolicyHolder policyHolder) {
+      this.policyHolder = new PolicyHolder(policyHolder);
+      policyObjects++;
+   }
+   
    
    /**
       calculates BMI (body mass index) using the formula ((Policyholder’s Weight * 703 ) / (Policyholder’s Height^2))
       @return BMI Policyholder's Body Mass Index
    */
    public double calculateBMI() {
-      double BMI = (weight * 703) / (Math.pow(height, 2));
+      double BMI = (policyHolder.getWeight() * 703) / (Math.pow(policyHolder.getHeight(), 2));
       return BMI;
    }
    
@@ -17,19 +36,32 @@ public class Policy {
    */
    public double calculatePrice() {
       double price = 600;
-      if (age > 50) price += 75;
-      if (smokingStatus == "smoker") price += 100;
+      if (policyHolder.getAge() > 50) price += 75;
+      if (policyHolder.getSmokingStatus() == "smoker") price += 100;
       if (calculateBMI() > 35) price += (calculateBMI() -35) * 20;
       return price;
+   }
+     
+   /**
+      @return number of policy objects created
+   */
+   public static int getPolicyObjects() {
+      return policyObjects;
+   }
+   
+   /**
+      @return policyHolder object containing information regarding policyholder
+   */
+   public PolicyHolder getPolicyHolder() {
+      return new PolicyHolder(policyHolder);
    }
    
    /**
       @return fomrated string displaying information regarding the policy
    */
    public String toString() {
-      return  String.format("\n\nPolicyholder's Height: %.1f inches", getHeight()) +
-              String.format("\n\nPolicyholder's Weight: %.1f pounds", getWeight()) +
+      return  policyHolder +
               String.format("\n\nPolicyholder's BMI: %.2f", calculateBMI()) +
-              String.format("\n\nPolicy Price: $%.2f", calculatePrice())
+              String.format("\n\nPolicy Price: $%.2f", calculatePrice());
    }
 }
