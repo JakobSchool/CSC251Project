@@ -1,4 +1,6 @@
 public class Policy {
+
+   static int PolicyObjects = 0;
    
    /**
       calculates BMI (body mass index) using the formula ((Policyholder’s Weight * 703 ) / (Policyholder’s Height^2))
