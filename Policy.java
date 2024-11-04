@@ -25,17 +25,9 @@ public class Policy {
       @return fomrated string displaying information regarding the policy
    */
    public String toString() {
-      return "\n-----------------------------------------------------------" +
-              "\nPolicy Number: " + getPolicyNumber() +
-              "\n\nProvider Name: " + getProviderName() +
-              "\n\nPolicyholder's First Name: " + getFirstName() +
-              "\n\nPolicyholder's Last Name: " + getLastName() +
-              "\n\nPolicyholder's Age: " + getAge() +
-              "\n\nPolicyholder's Smoking Status: " + getSmokingStatus() +
-              String.format("\n\nPolicyholder's Height: %.1f inches", getHeight()) +
+      return  String.format("\n\nPolicyholder's Height: %.1f inches", getHeight()) +
               String.format("\n\nPolicyholder's Weight: %.1f pounds", getWeight()) +
               String.format("\n\nPolicyholder's BMI: %.2f", calculateBMI()) +
-              String.format("\n\nPolicy Price: $%.2f", calculatePrice()) +
-              "\n-----------------------------------------------------------";
+              String.format("\n\nPolicy Price: $%.2f", calculatePrice())
    }
 }

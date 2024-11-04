@@ -142,4 +142,13 @@ public class PolicyHolder {
    public void setWeight(int weight) {
       this.weight = weight;
    }
+   
+   public String toString() {
+      return  "Policy Number: " + getPolicyNumber() +
+              "\n\nProvider Name: " + getProviderName() +
+              "\n\nPolicyholder's First Name: " + getFirstName() +
+              "\n\nPolicyholder's Last Name: " + getLastName() +
+              "\n\nPolicyholder's Age: " + getAge() +
+              "\n\nPolicyholder's Smoking Status: " + getSmokingStatus()
+   }
 }
